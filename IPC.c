@@ -92,6 +92,10 @@ void p_zero(int* pTc, int* cTP) {
         if (message) {
             message = 0;
             printf("parenting...\n");
+            /*
+            In here is where I would read from pipes to see whats up 
+            and change the stack accordingly
+            */
             sleep(1);
         }
     }
