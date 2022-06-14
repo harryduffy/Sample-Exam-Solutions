@@ -89,8 +89,11 @@ void p_zero(int* pTc, int* cTP) {
     // busy wait for commands
     int active = 1;
     while (active) {
-        printf("parenting...\n");
-        sleep(1);
+        if (message) {
+            message = 0;
+            printf("parenting...\n");
+            sleep(1);
+        }
     }
 }
 
