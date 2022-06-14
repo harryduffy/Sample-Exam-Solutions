@@ -61,7 +61,7 @@ void worker(struct worker* worker) {
     // busy wait, need a signal handler for when signals have been sent
     int active = 1;
     while(active) {
-        if (0 == is_empty()) {
+        if (0 == is_empty() && 0 == is_full()) {
             pthread_mutex_lock(&lock);
 
             int decision = rand() % 2;
