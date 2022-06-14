@@ -138,8 +138,8 @@ int main(int argc, char** argv) {
 
         int pTc[2] = {-1, -1};
         int cTp[2] = {-1, -1};
-        if (-1 == pipe(pTc)) {perror("Line 85.\n");return -1;}
-        if (-1 == pipe(cTp)) {perror("Line 86.\n");return -1;}
+        if (-1 == pipe(pTc)) {perror(NULL);return -1;}
+        if (-1 == pipe(cTp)) {perror(NULL);return -1;}
 
         struct worker* curr = malloc(sizeof(worker));
         curr->pTc = pTc;
