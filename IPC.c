@@ -147,7 +147,7 @@ int main(int argc, char** argv) {
         workers[i] = curr;
 
         if (-1 == pid) {
-            perror("Line 52.\n");
+            perror(NULL);
             return -1;
         } else if (0 == pid) {
             worker(curr);
@@ -163,8 +163,8 @@ int main(int argc, char** argv) {
 
         int pTc[2] = {-1, -1};
         int cTp[2] = {-1, -1};
-        if (-1 == pipe(pTc)) {perror("Line 85.\n");return -1;}
-        if (-1 == pipe(cTp)) {perror("Line 86.\n");return -1;}
+        if (-1 == pipe(pTc)) {perror(NULL);return -1;}
+        if (-1 == pipe(cTp)) {perror(NULL);return -1;}
 
         struct cleaner* curr = malloc(sizeof(cleaner));
         curr->pTc = pTc;
@@ -172,7 +172,7 @@ int main(int argc, char** argv) {
         cleaners[i] = curr;
 
         if (-1 == pid) {
-            perror("Line 52.\n");
+            perror(NULL);
             return -1;
         } else if (0 == pid) {
             cleaner(curr);
