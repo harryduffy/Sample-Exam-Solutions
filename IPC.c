@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include "stack.h"
 
-pthread_mutex_t lock;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 static int message = 0;
 
@@ -104,13 +104,13 @@ void p_zero(int* pTc, int* cTP) {
 void destroy(struct worker** workers, struct cleaner** cleaners, int a, int b) {
 
     for (int i = 0; i < a; i++) {
-        close(workers[i]->cTp);
-        close(workers[i]->pTc);
+        close(*workers[i]->cTp);
+        close(*workers[i]->pTc);
         free(workers[i]);
     }
     for (int i = 0; i < b; i++) {
-        close(cleaners[i]->cTp);
-        close(cleaners[i]->pTc);
+        close(*cleaners[i]->cTp);
+        close(*cleaners[i]->pTc);
         free(cleaners[i]);
     }
 
